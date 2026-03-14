@@ -28,14 +28,16 @@ export default function Header({ title }: HeaderProps) {
 
   return (
     <>
-      {/* Header bar */}
       <header className="sticky top-0 z-10 bg-white border-b border-zinc-200 px-4 h-14 flex items-center justify-between">
+        {/* ロゴ → トップへ */}
         <button onClick={() => go('/')} className="flex items-center gap-2 min-h-[44px]">
           <div className="w-7 h-7 bg-emerald-600 rounded-lg flex items-center justify-center">
             <span className="text-white text-xs font-medium">K</span>
-          </button>
+          </div>
           <span className="text-base font-medium text-zinc-900">{title}</span>
-        </div>
+        </button>
+
+        {/* ハンバーガー */}
         <button
           onClick={() => setOpen(p => !p)}
           className="w-11 h-11 flex flex-col items-center justify-center gap-1.5"
@@ -47,7 +49,6 @@ export default function Header({ title }: HeaderProps) {
         </button>
       </header>
 
-      {/* Drawer overlay */}
       <AnimatePresence>
         {open && (
           <>
@@ -61,7 +62,6 @@ export default function Header({ title }: HeaderProps) {
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               className="fixed top-0 right-0 bottom-0 z-30 w-64 bg-white shadow-xl flex flex-col"
             >
-              {/* Drawer header */}
               <div className="h-14 flex items-center px-4 border-b border-zinc-100">
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 bg-emerald-600 rounded-lg flex items-center justify-center">
@@ -71,12 +71,11 @@ export default function Header({ title }: HeaderProps) {
                 </div>
               </div>
 
-              {/* Menu items */}
               <ul className="flex flex-col py-3">
-                <MenuItem icon="◎" label="概要"   onClick={() => { go('/dashboard'); setTab('overview'); }} active={title === '概要'} />
-                <MenuItem icon="↑" label="営業"   onClick={() => { go('/dashboard'); setTab('sales');    }} active={title === '営業'} />
-                <MenuItem icon="◷" label="工数"   onClick={() => { go('/dashboard'); setTab('work');     }} active={title === '工数管理'} />
-                <MenuItem icon="¥" label="請求"   onClick={() => { go('/dashboard'); setTab('billing');  }} active={title === '請求管理'} />
+                <MenuItem icon="◎" label="概要"  onClick={() => setTab('overview')} active={title === '概要'} />
+                <MenuItem icon="↑" label="営業"  onClick={() => setTab('sales')}   active={title === '営業'} />
+                <MenuItem icon="◷" label="工数"  onClick={() => setTab('work')}    active={title === '工数管理'} />
+                <MenuItem icon="¥" label="請求"  onClick={() => setTab('billing')} active={title === '請求管理'} />
               </ul>
 
               <div className="mt-auto px-4 py-6 border-t border-zinc-100">
