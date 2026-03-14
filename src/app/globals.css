@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: #f4f4f5;
+  color: #18181b;
+}
+
+@layer components {
+  .inp {
+    @apply w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm text-zinc-900 bg-white focus:outline-none focus:border-emerald-500;
+    min-height: 44px;
+  }
+}
