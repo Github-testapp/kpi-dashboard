@@ -30,10 +30,10 @@ export default function Header({ title }: HeaderProps) {
     <>
       {/* Header bar */}
       <header className="sticky top-0 z-10 bg-white border-b border-zinc-200 px-4 h-14 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <button onClick={() => go('/')} className="flex items-center gap-2 min-h-[44px]">
           <div className="w-7 h-7 bg-emerald-600 rounded-lg flex items-center justify-center">
             <span className="text-white text-xs font-medium">K</span>
-          </div>
+          </button>
           <span className="text-base font-medium text-zinc-900">{title}</span>
         </div>
         <button
